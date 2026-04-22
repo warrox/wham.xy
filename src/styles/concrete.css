@@ -1,0 +1,28 @@
+body {
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(60, 64, 68, 0.45), transparent 45%),
+    radial-gradient(ellipse at 80% 85%, rgba(50, 54, 58, 0.38), transparent 50%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  position: relative;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0, transparent 2px, #ffffff 2px, #ffffff 3px),
+    repeating-linear-gradient(90deg, transparent 0, transparent 2px, #ffffff 2px, #ffffff 3px);
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}

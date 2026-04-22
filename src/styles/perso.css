@@ -1,0 +1,236 @@
+/* =========================================================
+   /perso — Arcade 90's: white tile wall + Pac-Man + polaroids
+   ========================================================= */
+
+/* When perso mode is active, override body background/texture */
+body[data-mode="perso"] {
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f4f1eb 100%);
+  color: #1a1a1a;
+}
+
+body[data-mode="perso"]::after {
+  display: none;
+}
+
+body[data-mode="perso"]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(200, 194, 183, 0.55) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(200, 194, 183, 0.55) 1px, transparent 1px);
+  background-size: 68px 68px;
+  background-position: 0 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header / footer on perso: darker text, remove concrete feel */
+body[data-mode="perso"] .app-footer {
+  color: #5a5a5a;
+  border-top-color: rgba(0, 0, 0, 0.12);
+}
+body[data-mode="perso"] .app-footer a:hover { color: #1e1ea4; }
+body[data-mode="perso"] .app-footer .dot { color: rgba(0, 0, 0, 0.2); }
+
+/* ModeToggle on perso: light pill */
+body[data-mode="perso"] .mode-toggle {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+body[data-mode="perso"] .mode-toggle-ring {
+  background: #1e1ea4;
+}
+
+/* ========= Frontispiece — perso variant ========= */
+.frontispiece-perso {
+  position: relative;
+  z-index: 2;
+}
+.frontispiece-perso .frontispiece-name {
+  font-family: 'Press Start 2P', 'VT323', 'Courier New', monospace;
+  font-weight: 400;
+  font-size: clamp(22px, 4.4vw, 38px);
+  color: #1e1ea4;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+.frontispiece-perso .frontispiece-tag {
+  font-family: 'Press Start 2P', 'VT323', 'Courier New', monospace;
+  font-size: 10px;
+  color: #1a1a1a;
+  letter-spacing: 2px;
+  margin-top: 18px;
+}
+.frontispiece-perso .frontispiece-rule {
+  display: none;
+}
+
+/* ========= Stage ========= */
+.perso-stage {
+  position: relative;
+  min-height: 720px;
+  margin-top: var(--space-5);
+  z-index: 1;
+}
+
+/* ========= Pac-Man decor ========= */
+.maze-corner {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 5px solid #1e1ea4;
+  pointer-events: none;
+  z-index: 2;
+}
+.maze-top-right {
+  top: -10px;
+  right: -10px;
+  border-left: none;
+  border-bottom: none;
+}
+.maze-bottom-left {
+  bottom: -10px;
+  left: -10px;
+  border-right: none;
+  border-top: none;
+}
+
+.pacman-watermark {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  width: 110px;
+  height: 110px;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.crt-scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.04) 0,
+    rgba(0, 0, 0, 0.04) 2px,
+    transparent 2px,
+    transparent 3px
+  );
+  z-index: 999;
+}
+
+/* ========= Polaroid ========= */
+.polaroid {
+  position: absolute;
+  background: #ffffff;
+  padding: 8px 8px 24px;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.18),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+  z-index: 3;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.04) !important;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.22),
+    0 2px 5px rgba(0, 0, 0, 0.18);
+  z-index: 10;
+}
+
+.polaroid-img {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #f0ede4;
+}
+.polaroid-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.polaroid-cap {
+  font-family: 'Caveat', 'Marker Felt', 'Comic Sans MS', cursive;
+  font-size: 17px;
+  color: #2a2a2a;
+  text-align: center;
+  margin-top: 6px;
+  line-height: 1;
+}
+
+.polaroid-tape {
+  position: absolute;
+  width: 54px;
+  height: 18px;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+}
+.polaroid-tape-yellow { background: rgba(255, 228, 120, 0.75); }
+.polaroid-tape-pink   { background: rgba(255, 155, 198, 0.8); }
+.polaroid-tape-cyan   { background: rgba(98, 226, 239, 0.75); }
+
+/* ========= PostIt ========= */
+.postit {
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  padding: 12px 10px;
+  font-family: 'Caveat', 'Marker Felt', 'Comic Sans MS', cursive;
+  font-size: 17px;
+  line-height: 1.1;
+  color: #1a1a1a;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 4;
+}
+
+.postit-yellow { background: #ffea5c; }
+.postit-pink   { background: #ff9bc6; }
+.postit-cyan   { background: #62e2ef; }
+
+/* ========= Responsive fallback ========= */
+@media (max-width: 768px) {
+  .perso-stage {
+    min-height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+    padding: var(--space-5) var(--space-4);
+  }
+
+  /* Kill absolute positioning on mobile — let grid handle layout */
+  .perso-stage .polaroid {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    transform: rotate(var(--poly-rot, 0deg)) !important;
+  }
+
+  /* Hide decorations on mobile */
+  .perso-stage .maze-corner,
+  .perso-stage .pacman-watermark,
+  .perso-stage .postit {
+    display: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .perso-stage {
+    grid-template-columns: 1fr;
+  }
+}

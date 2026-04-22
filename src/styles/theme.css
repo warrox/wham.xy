@@ -1,0 +1,26 @@
+:root {
+  /* Berghain / concrete palette */
+  --bg:        #0e1012;
+  --bg-elev:   #16181a;
+  --border:    #2a2d30;
+  --border-2:  #3a3d40;
+  --muted:     #7a7d80;
+  --text:      #cdd0d3;
+  --text-hi:   #e8e9eb;
+
+  /* Typography */
+  --font-display: 'Archivo Narrow Variable', 'Helvetica Neue Condensed', 'Arial Narrow', sans-serif;
+  --font-body:    'Inter Variable', -apple-system, system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Rhythm */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 112px;
+}

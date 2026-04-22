@@ -1,0 +1,219 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-5);
+  max-width: 880px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.app-header {
+  position: relative;
+  padding-top: var(--space-5);
+}
+
+.app-main {
+  flex: 1;
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-8);
+}
+
+.app-footer {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.app-footer a:hover {
+  color: var(--text);
+}
+
+.app-footer .dot {
+  display: inline-block;
+  margin: 0 var(--space-3);
+  color: var(--border-2);
+}
+
+/* ===== Frontispiece ===== */
+.frontispiece {
+  text-align: center;
+  padding: var(--space-8) 0 var(--space-7);
+}
+
+.frontispiece-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(40px, 8vw, 72px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-hi);
+  line-height: 1;
+  margin-bottom: var(--space-4);
+}
+
+.frontispiece-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--space-5);
+}
+
+.frontispiece-rule {
+  width: 72px;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--border-2);
+}
+
+.section-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: var(--space-8) 0 var(--space-6);
+}
+
+/* ===== ModeToggle ===== */
+.mode-toggle {
+  position: absolute;
+  top: var(--space-5);
+  right: 0;
+  display: inline-flex;
+  width: 78px;
+  height: 34px;
+  border-radius: 3px;
+  border: 1px solid var(--border-2);
+  background: var(--bg-elev);
+  padding: 0 3px;
+  align-items: center;
+}
+
+.mode-toggle-ring {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 34px;
+  height: 26px;
+  border-radius: 2px;
+  background: var(--text);
+  transition: left 0.25s ease;
+}
+
+.mode-toggle.perso .mode-toggle-ring {
+  left: calc(100% - 34px - 3px);
+}
+
+.mode-toggle-slot {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+  line-height: 1;
+  filter: grayscale(1) contrast(1.2) brightness(1);
+  transition: filter 0.2s ease;
+}
+
+.mode-toggle.engineer .mode-toggle-slot.slot-engineer,
+.mode-toggle.perso    .mode-toggle-slot.slot-perso {
+  filter: grayscale(1) contrast(1.2) brightness(0.12);
+}
+
+/* ===== Figure (engineer mode) ===== */
+.figures {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.figure-frame {
+  position: relative;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.figure-frame::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.figure-frame iframe,
+.figure-frame img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 0;
+}
+
+.figure-frame img {
+  filter: grayscale(0.4) contrast(0.95);
+  transition: filter 0.3s ease, transform 0.5s ease;
+}
+
+.figure-frame a:hover img {
+  filter: grayscale(0.1) contrast(1);
+  transform: scale(1.01);
+}
+
+.figure-frame .link-arrow {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--muted);
+  transition: color 0.2s ease;
+  z-index: 2;
+}
+
+.figure-frame a:hover .link-arrow {
+  color: var(--text);
+}
+
+.figure-caption {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.figure-caption b {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ===== Engineer variant override ===== */
+.engineer .figure-frame { aspect-ratio: auto; }

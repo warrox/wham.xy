@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.vite/
+.superpowers/
+.playwright-mcp/
+.DS_Store
+*.log
+*.tsbuildinfo
+
+# Test screenshots (from Playwright validation, not part of the source)
+/*.png

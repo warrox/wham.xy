@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a3840"/>
+      <stop offset="1" stop-color="#0e1012"/>
+    </linearGradient>
+    <pattern id="grid" patternUnits="userSpaceOnUse" width="40" height="40">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <text x="80" y="820" font-family="Archivo, Helvetica, Arial Narrow, sans-serif" font-weight="700" font-size="72" fill="rgba(255,255,255,0.88)" letter-spacing="6">ARCADS</text>
+  <text x="80" y="860" font-family="monospace" font-size="18" fill="rgba(255,255,255,0.4)" letter-spacing="4">PLACEHOLDER · REPLACE WITH REAL SCREENSHOT</text>
+</svg>
