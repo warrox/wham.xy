@@ -4,7 +4,12 @@ export type Project =
       name: string;
       year: string;
       tagline?: string;
-      media: { type: 'youtube'; id: string; orientation?: 'landscape' | 'portrait' };
+      media: {
+        type: 'youtube';
+        id: string;
+        orientation?: 'landscape' | 'portrait';
+        frame?: 'iphone';
+      };
     }
   | {
       n: number;
@@ -23,6 +28,8 @@ export type Project =
         sources: { src: string; type: string }[];
         poster: string;
         href?: string;
+        orientation?: 'landscape' | 'portrait';
+        frame?: 'iphone';
       };
     };
 
@@ -62,10 +69,17 @@ export const PROJECTS: Project[] = [
     n: 3,
     name: 'MVP Boom',
     year: '2022',
+    tagline: 'real-time live-typing iOS messaging',
     media: {
-      type: 'link',
-      src: '/projects/mvpboom.svg',
+      type: 'video',
+      sources: [
+        { src: '/projects/mvpboom.webm', type: 'video/webm' },
+        { src: '/projects/mvpboom.mp4', type: 'video/mp4' },
+      ],
+      poster: '/projects/mvpboom-poster.jpg',
       href: 'https://mvpboom.com',
+      orientation: 'portrait',
+      frame: 'iphone',
     },
   },
   {
@@ -73,6 +87,11 @@ export const PROJECTS: Project[] = [
     name: 'Basalt',
     year: '2024—',
     tagline: 'applied LLM infrastructure',
-    media: { type: 'youtube', id: '842DZgwHHx8', orientation: 'portrait' },
+    media: {
+      type: 'youtube',
+      id: '842DZgwHHx8',
+      orientation: 'portrait',
+      frame: 'iphone',
+    },
   },
 ];

@@ -14,12 +14,17 @@ export function Figure({ project }: { project: Project }) {
 
   if (project.media.type === 'youtube') {
     const isPortrait = project.media.orientation === 'portrait';
+    const isIphone = project.media.frame === 'iphone';
+    const frameClass = [
+      'figure-frame',
+      isPortrait && 'figure-frame--portrait',
+      isIphone && 'figure-frame--iphone',
+    ]
+      .filter(Boolean)
+      .join(' ');
     return (
       <figure className={`figure${isPortrait ? ' figure--portrait' : ''}`}>
-        <div
-          className={`figure-frame${isPortrait ? ' figure-frame--portrait' : ''}`}
-          data-label={label}
-        >
+        <div className={frameClass} data-label={label}>
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${project.media.id}`}
             title={`${project.name} — video`}
@@ -35,7 +40,16 @@ export function Figure({ project }: { project: Project }) {
   }
 
   if (project.media.type === 'video') {
-    const { sources, poster, href } = project.media;
+    const { sources, poster, href, orientation, frame } = project.media;
+    const isPortrait = orientation === 'portrait';
+    const isIphone = frame === 'iphone';
+    const frameClass = [
+      'figure-frame',
+      isPortrait && 'figure-frame--portrait',
+      isIphone && 'figure-frame--iphone',
+    ]
+      .filter(Boolean)
+      .join(' ');
     const videoEl = (
       <video
         className="figure-video"
@@ -53,8 +67,8 @@ export function Figure({ project }: { project: Project }) {
       </video>
     );
     return (
-      <figure className="figure">
-        <div className="figure-frame" data-label={label}>
+      <figure className={`figure${isPortrait ? ' figure--portrait' : ''}`}>
+        <div className={frameClass} data-label={label}>
           {href ? (
             <a
               href={href}

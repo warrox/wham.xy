@@ -231,3 +231,68 @@
 .figure-frame--portrait iframe {
   aspect-ratio: 9 / 16;
 }
+
+.figure-frame--portrait video {
+  aspect-ratio: 9 / 19.5;
+  object-fit: cover;
+}
+
+/* ===== iPhone mockup frame (CSS-only bezel + dynamic island + home indicator) ===== */
+.figure-frame--iphone {
+  background: #0a0a0a;
+  border: 0;
+  border-radius: 44px;
+  padding: 14px 12px 18px;
+  position: relative;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 0 0 4px #1a1a1a,
+    0 24px 60px -10px rgba(0, 0, 0, 0.55);
+}
+
+.figure-frame--iphone::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86px;
+  height: 24px;
+  background: #000;
+  border-radius: 14px;
+  z-index: 3;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.figure-frame--iphone::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 2px;
+  z-index: 3;
+}
+
+.figure-frame--iphone iframe,
+.figure-frame--iphone video {
+  border-radius: 30px;
+  overflow: hidden;
+  display: block;
+}
+
+.figure-frame--iphone a {
+  display: block;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.figure-frame--iphone .link-arrow {
+  z-index: 4;
+  top: 18px;
+  right: 18px;
+  color: rgba(255, 255, 255, 0.5);
+}
