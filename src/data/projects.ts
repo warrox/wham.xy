@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
   {
     n: 1,
     name: 'Arcads',
-    year: '2023',
+    year: 'March 2026',
     tagline: 'video asset pipeline — upload, transcode, stream',
     media: {
       type: 'video',
@@ -55,7 +55,7 @@ export const PROJECTS: Project[] = [
   {
     n: 2,
     name: 'RainPath AI',
-    year: '2023',
+    year: '2026',
     tagline: 'AI-powered digital pathology platform',
     media: {
       type: 'video',
@@ -71,7 +71,7 @@ export const PROJECTS: Project[] = [
   {
     n: 3,
     name: 'MVP Boom',
-    year: '2022',
+    year: 'Feb 2026',
     tagline: 'real-time live-typing iOS messaging',
     media: {
       type: 'video',
@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
   {
     n: 4,
     name: 'Basalt',
-    year: '2024—',
+    year: '2022',
     tagline: 'applied LLM infrastructure',
     media: {
       type: 'youtube',
