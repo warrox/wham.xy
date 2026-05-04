@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import type { Project } from '../data/projects';
 
 function pad(n: number) {
@@ -40,24 +41,41 @@ export function Figure({ project }: { project: Project }) {
   }
 
   if (project.media.type === 'video') {
-    const { sources, poster, href, orientation, frame } = project.media;
+    const { sources, poster, href, orientation, frame, hoverToPlay } = project.media;
     const isPortrait = orientation === 'portrait';
     const isIphone = frame === 'iphone';
     const frameClass = [
       'figure-frame',
       isPortrait && 'figure-frame--portrait',
       isIphone && 'figure-frame--iphone',
+      hoverToPlay && 'figure-frame--hover',
     ]
       .filter(Boolean)
       .join(' ');
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const onEnter = hoverToPlay
+      ? () => {
+          const v = videoRef.current;
+          if (v) v.play().catch(() => {});
+        }
+      : undefined;
+    const onLeave = hoverToPlay
+      ? () => {
+          const v = videoRef.current;
+          if (!v) return;
+          v.pause();
+          v.load();
+        }
+      : undefined;
     const videoEl = (
       <video
+        ref={videoRef}
         className="figure-video"
-        autoPlay
+        autoPlay={!hoverToPlay}
         muted
         loop
         playsInline
-        preload="metadata"
+        preload={hoverToPlay ? 'none' : 'metadata'}
         poster={poster}
         aria-label={`${project.name} — demo`}
       >
@@ -68,7 +86,12 @@ export function Figure({ project }: { project: Project }) {
     );
     return (
       <figure className={`figure${isPortrait ? ' figure--portrait' : ''}`}>
-        <div className={frameClass} data-label={label}>
+        <div
+          className={frameClass}
+          data-label={label}
+          onMouseEnter={onEnter}
+          onMouseLeave={onLeave}
+        >
           {href ? (
             <a
               href={href}
