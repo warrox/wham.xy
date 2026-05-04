@@ -4,7 +4,7 @@ export type Project =
       name: string;
       year: string;
       tagline?: string;
-      media: { type: 'youtube'; id: string };
+      media: { type: 'youtube'; id: string; orientation?: 'landscape' | 'portrait' };
     }
   | {
       n: number;
@@ -14,18 +14,10 @@ export type Project =
       media: { type: 'link'; src: string; href: string };
     };
 
-// TODO: replace __TO_FILL__ with the real YouTube video id for Basalt.
 // TODO: confirm external URLs for Arcads / RainPath / MVP Boom.
 export const PROJECTS: Project[] = [
   {
     n: 1,
-    name: 'Basalt',
-    year: '2024—',
-    tagline: 'applied LLM infrastructure',
-    media: { type: 'youtube', id: '__TO_FILL__' },
-  },
-  {
-    n: 2,
     name: 'Arcads',
     year: '2023',
     media: {
@@ -35,7 +27,7 @@ export const PROJECTS: Project[] = [
     },
   },
   {
-    n: 3,
+    n: 2,
     name: 'RainPath AI',
     year: '2023',
     media: {
@@ -45,7 +37,7 @@ export const PROJECTS: Project[] = [
     },
   },
   {
-    n: 4,
+    n: 3,
     name: 'MVP Boom',
     year: '2022',
     media: {
@@ -53,5 +45,12 @@ export const PROJECTS: Project[] = [
       src: '/projects/mvpboom.svg',
       href: 'https://mvpboom.com',
     },
+  },
+  {
+    n: 4,
+    name: 'Basalt',
+    year: '2024—',
+    tagline: 'applied LLM infrastructure',
+    media: { type: 'youtube', id: '842DZgwHHx8', orientation: 'portrait' },
   },
 ];

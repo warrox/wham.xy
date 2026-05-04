@@ -13,9 +13,13 @@ export function Figure({ project }: { project: Project }) {
   );
 
   if (project.media.type === 'youtube') {
+    const isPortrait = project.media.orientation === 'portrait';
     return (
-      <figure className="figure">
-        <div className="figure-frame" data-label={label}>
+      <figure className={`figure${isPortrait ? ' figure--portrait' : ''}`}>
+        <div
+          className={`figure-frame${isPortrait ? ' figure-frame--portrait' : ''}`}
+          data-label={label}
+        >
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${project.media.id}`}
             title={`${project.name} — video`}

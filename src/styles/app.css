@@ -217,3 +217,14 @@
 
 /* ===== Engineer variant override ===== */
 .engineer .figure-frame { aspect-ratio: auto; }
+
+/* ===== Portrait variant (YouTube Shorts, vertical media) ===== */
+.figure-frame--portrait {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.figure-frame--portrait iframe {
+  aspect-ratio: 9 / 16;
+}
