@@ -34,6 +34,46 @@ export function Figure({ project }: { project: Project }) {
     );
   }
 
+  if (project.media.type === 'video') {
+    const { sources, poster, href } = project.media;
+    const videoEl = (
+      <video
+        className="figure-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={poster}
+        aria-label={`${project.name} — demo`}
+      >
+        {sources.map((s) => (
+          <source key={s.src} src={s.src} type={s.type} />
+        ))}
+      </video>
+    );
+    return (
+      <figure className="figure">
+        <div className="figure-frame" data-label={label}>
+          {href ? (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${project.name} — open project`}
+            >
+              {videoEl}
+              <span className="link-arrow" aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            videoEl
+          )}
+        </div>
+        <figcaption className="figure-caption">{caption}</figcaption>
+      </figure>
+    );
+  }
+
   return (
     <figure className="figure">
       <div className="figure-frame" data-label={label}>

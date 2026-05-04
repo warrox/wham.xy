@@ -168,7 +168,8 @@
 }
 
 .figure-frame iframe,
-.figure-frame img {
+.figure-frame img,
+.figure-frame video {
   width: 100%;
   display: block;
   aspect-ratio: 16 / 9;
@@ -176,12 +177,14 @@
   border: 0;
 }
 
-.figure-frame img {
+.figure-frame img,
+.figure-frame video {
   filter: grayscale(0.4) contrast(0.95);
   transition: filter 0.3s ease, transform 0.5s ease;
 }
 
-.figure-frame a:hover img {
+.figure-frame a:hover img,
+.figure-frame a:hover video {
   filter: grayscale(0.1) contrast(1);
   transform: scale(1.01);
 }

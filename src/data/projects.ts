@@ -12,6 +12,18 @@ export type Project =
       year: string;
       tagline?: string;
       media: { type: 'link'; src: string; href: string };
+    }
+  | {
+      n: number;
+      name: string;
+      year: string;
+      tagline?: string;
+      media: {
+        type: 'video';
+        sources: { src: string; type: string }[];
+        poster: string;
+        href?: string;
+      };
     };
 
 // TODO: confirm external URLs for Arcads / RainPath / MVP Boom.
@@ -20,9 +32,14 @@ export const PROJECTS: Project[] = [
     n: 1,
     name: 'Arcads',
     year: '2023',
+    tagline: 'video asset pipeline — upload, transcode, stream',
     media: {
-      type: 'link',
-      src: '/projects/arcads.svg',
+      type: 'video',
+      sources: [
+        { src: '/projects/arcads.webm', type: 'video/webm' },
+        { src: '/projects/arcads.mp4', type: 'video/mp4' },
+      ],
+      poster: '/projects/arcads-poster.jpg',
       href: 'https://arcads.ai',
     },
   },
