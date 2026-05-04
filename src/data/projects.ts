@@ -29,7 +29,7 @@ export type Project =
         poster: string;
         href?: string;
         orientation?: 'landscape' | 'portrait';
-        frame?: 'iphone';
+        frame?: 'iphone' | 'browser';
         hoverToPlay?: boolean;
       };
     };
@@ -49,6 +49,7 @@ export const PROJECTS: Project[] = [
       ],
       poster: '/projects/arcads-poster.jpg',
       href: 'https://arcads.ai',
+      frame: 'browser',
       hoverToPlay: true,
     },
   },
@@ -65,6 +66,7 @@ export const PROJECTS: Project[] = [
       ],
       poster: '/projects/rainpath-poster.jpg',
       href: 'https://rainpath.ai',
+      frame: 'browser',
       hoverToPlay: true,
     },
   },

@@ -44,10 +44,15 @@ export function Figure({ project }: { project: Project }) {
     const { sources, poster, href, orientation, frame, hoverToPlay } = project.media;
     const isPortrait = orientation === 'portrait';
     const isIphone = frame === 'iphone';
+    const isBrowser = frame === 'browser';
+    const hostname = href
+      ? href.replace(/^https?:\/\//, '').replace(/\/$/, '')
+      : '';
     const frameClass = [
       'figure-frame',
       isPortrait && 'figure-frame--portrait',
       isIphone && 'figure-frame--iphone',
+      isBrowser && 'figure-frame--browser',
       hoverToPlay && 'figure-frame--hover',
     ]
       .filter(Boolean)
@@ -84,6 +89,16 @@ export function Figure({ project }: { project: Project }) {
         ))}
       </video>
     );
+    const browserChrome = isBrowser ? (
+      <div className="browser-chrome" aria-hidden="true">
+        <span className="browser-chrome-lights">
+          <span />
+          <span />
+          <span />
+        </span>
+        <span className="browser-chrome-url">{hostname}</span>
+      </div>
+    ) : null;
     return (
       <figure className={`figure${isPortrait ? ' figure--portrait' : ''}`}>
         <div
@@ -92,6 +107,7 @@ export function Figure({ project }: { project: Project }) {
           onMouseEnter={onEnter}
           onMouseLeave={onLeave}
         >
+          {browserChrome}
           {href ? (
             <a
               href={href}
