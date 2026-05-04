@@ -27,7 +27,7 @@ export function Figure({ project }: { project: Project }) {
       <figure className={`figure${isPortrait ? ' figure--portrait' : ''}`}>
         <div className={frameClass} data-label={label}>
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${project.media.id}`}
+            src={`https://www.youtube-nocookie.com/embed/${project.media.id}?mute=1`}
             title={`${project.name} — video`}
             allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
             allowFullScreen
