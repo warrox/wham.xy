@@ -47,9 +47,14 @@ export const PROJECTS: Project[] = [
     n: 2,
     name: 'RainPath AI',
     year: '2023',
+    tagline: 'AI-powered digital pathology platform',
     media: {
-      type: 'link',
-      src: '/projects/rainpath.svg',
+      type: 'video',
+      sources: [
+        { src: '/projects/rainpath.webm', type: 'video/webm' },
+        { src: '/projects/rainpath.mp4', type: 'video/mp4' },
+      ],
+      poster: '/projects/rainpath-poster.jpg',
       href: 'https://rainpath.ai',
     },
   },
