@@ -13,33 +13,6 @@ export function Figure({ project }: { project: Project }) {
     </>
   );
 
-  if (project.media.type === 'youtube') {
-    const isPortrait = project.media.orientation === 'portrait';
-    const isIphone = project.media.frame === 'iphone';
-    const frameClass = [
-      'figure-frame',
-      isPortrait && 'figure-frame--portrait',
-      isIphone && 'figure-frame--iphone',
-    ]
-      .filter(Boolean)
-      .join(' ');
-    return (
-      <figure className={`figure${isPortrait ? ' figure--portrait' : ''}`}>
-        <div className={frameClass} data-label={label}>
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${project.media.id}?mute=1`}
-            title={`${project.name} — video`}
-            allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
-            allowFullScreen
-            referrerPolicy="strict-origin-when-cross-origin"
-            loading="lazy"
-          />
-        </div>
-        <figcaption className="figure-caption">{caption}</figcaption>
-      </figure>
-    );
-  }
-
   if (project.media.type === 'video') {
     const { sources, poster, href, orientation, frame, hoverToPlay } = project.media;
     const isPortrait = orientation === 'portrait';

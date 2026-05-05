@@ -4,18 +4,6 @@ export type Project =
       name: string;
       year: string;
       tagline?: string;
-      media: {
-        type: 'youtube';
-        id: string;
-        orientation?: 'landscape' | 'portrait';
-        frame?: 'iphone';
-      };
-    }
-  | {
-      n: number;
-      name: string;
-      year: string;
-      tagline?: string;
       media: { type: 'link'; src: string; href: string };
     }
   | {
@@ -89,14 +77,19 @@ export const PROJECTS: Project[] = [
   },
   {
     n: 4,
-    name: 'Basalt',
-    year: '2022',
-    tagline: 'applied LLM infrastructure',
+    name: 'aimux',
+    year: '2026',
+    tagline: 'terminal multiplexer for AI CLIs',
     media: {
-      type: 'youtube',
-      id: '842DZgwHHx8',
-      orientation: 'portrait',
-      frame: 'iphone',
+      type: 'video',
+      sources: [
+        { src: '/projects/aimux.webm', type: 'video/webm' },
+        { src: '/projects/aimux.mp4', type: 'video/mp4' },
+      ],
+      poster: '/projects/aimux-poster.jpg',
+      href: 'https://aimux.sh',
+      frame: 'browser',
+      hoverToPlay: true,
     },
   },
 ];
