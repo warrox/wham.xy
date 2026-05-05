@@ -26,23 +26,6 @@ export type Project =
 export const PROJECTS: Project[] = [
   {
     n: 1,
-    name: 'Arcads',
-    year: 'March 2026',
-    tagline: 'video asset pipeline — upload, transcode, stream',
-    media: {
-      type: 'video',
-      sources: [
-        { src: '/projects/arcads.webm', type: 'video/webm' },
-        { src: '/projects/arcads.mp4', type: 'video/mp4' },
-      ],
-      poster: '/projects/arcads-poster.jpg',
-      href: 'https://arcads.ai',
-      frame: 'browser',
-      hoverToPlay: true,
-    },
-  },
-  {
-    n: 2,
     name: 'RainPath AI',
     year: '2026',
     tagline: 'AI-powered digital pathology platform',
@@ -59,24 +42,24 @@ export const PROJECTS: Project[] = [
     },
   },
   {
-    n: 3,
-    name: 'MVP Boom',
-    year: 'Feb 2026',
-    tagline: 'real-time live-typing iOS messaging',
+    n: 2,
+    name: 'Arcads',
+    year: 'March 2026',
+    tagline: 'video asset pipeline — upload, transcode, stream',
     media: {
       type: 'video',
       sources: [
-        { src: '/projects/mvpboom.webm', type: 'video/webm' },
-        { src: '/projects/mvpboom.mp4', type: 'video/mp4' },
+        { src: '/projects/arcads.webm', type: 'video/webm' },
+        { src: '/projects/arcads.mp4', type: 'video/mp4' },
       ],
-      poster: '/projects/mvpboom-poster.jpg',
-      href: 'https://mvpboom.com',
-      orientation: 'portrait',
-      frame: 'iphone',
+      poster: '/projects/arcads-poster.jpg',
+      href: 'https://arcads.ai',
+      frame: 'browser',
+      hoverToPlay: true,
     },
   },
   {
-    n: 4,
+    n: 3,
     name: 'aimux',
     year: '2026',
     tagline: 'terminal multiplexer for AI CLIs',
@@ -90,6 +73,23 @@ export const PROJECTS: Project[] = [
       href: 'https://aimux.sh',
       frame: 'browser',
       hoverToPlay: true,
+    },
+  },
+  {
+    n: 4,
+    name: 'MVP Boom',
+    year: 'Feb 2026',
+    tagline: 'real-time live-typing iOS messaging',
+    media: {
+      type: 'video',
+      sources: [
+        { src: '/projects/mvpboom.webm', type: 'video/webm' },
+        { src: '/projects/mvpboom.mp4', type: 'video/mp4' },
+      ],
+      poster: '/projects/mvpboom-poster.jpg',
+      href: 'https://mvpboom.com',
+      orientation: 'portrait',
+      frame: 'iphone',
     },
   },
 ];
