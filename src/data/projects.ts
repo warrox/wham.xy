@@ -94,7 +94,6 @@ export const PROJECTS: Project[] = [
         { src: '/projects/mvpboom.mp4', type: 'video/mp4' },
       ],
       poster: '/projects/mvpboom-poster.jpg',
-      href: 'https://mvpboom.com',
       orientation: 'portrait',
       frame: 'iphone',
     },
