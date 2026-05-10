@@ -370,3 +370,39 @@
   color: var(--muted);
   z-index: 3;
 }
+
+/* ===== Hover description overlay (slides up over video) ===== */
+.figure-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px 20px 18px;
+  background: linear-gradient(180deg, rgba(10, 10, 15, 0) 0%, rgba(10, 10, 15, 0.92) 45%);
+  color: rgba(255, 255, 255, 0.95);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 250ms ease-out, transform 250ms ease-out;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.figure-frame:hover .figure-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* iPhone frame: respect inner padding + rounded screen corners */
+.figure-frame--iphone .figure-overlay {
+  left: 12px;
+  right: 12px;
+  bottom: 18px;
+  border-radius: 0 0 30px 30px;
+  overflow: hidden;
+  font-size: 10.5px;
+  padding: 18px 14px 16px;
+  line-height: 1.5;
+}

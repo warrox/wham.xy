@@ -1,34 +1,35 @@
-export type Project =
-  | {
-      n: number;
-      name: string;
-      year: string;
-      tagline?: string;
-      media: { type: 'link'; src: string; href: string };
-    }
-  | {
-      n: number;
-      name: string;
-      year: string;
-      tagline?: string;
-      media: {
-        type: 'video';
-        sources: { src: string; type: string }[];
-        poster: string;
-        href?: string;
-        orientation?: 'landscape' | 'portrait';
-        frame?: 'iphone' | 'browser';
-        hoverToPlay?: boolean;
-      };
-    };
+type ProjectBase = {
+  n: number;
+  name: string;
+  year: string;
+  tagline?: string;
+  description?: string;
+};
 
-// TODO: confirm external URLs for Arcads / RainPath / MVP Boom.
+export type Project = ProjectBase &
+  (
+    | { media: { type: 'link'; src: string; href: string } }
+    | {
+        media: {
+          type: 'video';
+          sources: { src: string; type: string }[];
+          poster: string;
+          href?: string;
+          orientation?: 'landscape' | 'portrait';
+          frame?: 'iphone' | 'browser';
+          hoverToPlay?: boolean;
+        };
+      }
+  );
+
 export const PROJECTS: Project[] = [
   {
     n: 1,
     name: 'RainPath AI',
     year: '2026',
     tagline: 'AI-powered digital pathology platform',
+    description:
+      'AI assistant for pathologists analyzing whole-slide images. Built the technical module from scratch. Stack: React / NestJS / AWS.',
     media: {
       type: 'video',
       sources: [
@@ -46,6 +47,8 @@ export const PROJECTS: Project[] = [
     name: 'Arcads',
     year: 'March 2026',
     tagline: 'video asset pipeline — upload, transcode, stream',
+    description:
+      'End-to-end video pipeline I built solo: upload anything, auto-transcode for the web (GPU-accelerated when available), stream it back with adaptive quality. Stack: NestJS / Postgres / Redis / MinIO.',
     media: {
       type: 'video',
       sources: [
@@ -63,6 +66,8 @@ export const PROJECTS: Project[] = [
     name: 'aimux',
     year: '2026',
     tagline: 'terminal multiplexer for AI CLIs',
+    description:
+      'A multiplexer for AI coding agents. Run Claude, Codex, and OpenCode side-by-side in one terminal, switch with vim-style keys. Co-built — Bun + TypeScript.',
     media: {
       type: 'video',
       sources: [
@@ -80,6 +85,8 @@ export const PROJECTS: Project[] = [
     name: 'MVP Boom',
     year: 'Feb 2026',
     tagline: 'real-time live-typing iOS messaging',
+    description:
+      'iOS messaging reinvented: every keystroke streams live to the recipient. Plus heart rate (HealthKit) and live location. Co-built — React Native / Expo / Fastify / WebSockets.',
     media: {
       type: 'video',
       sources: [

@@ -94,6 +94,11 @@ export function Figure({ project }: { project: Project }) {
           ) : (
             videoEl
           )}
+          {project.description && (
+            <div className="figure-overlay" aria-hidden="true">
+              {project.description}
+            </div>
+          )}
         </div>
         <figcaption className="figure-caption">{caption}</figcaption>
       </figure>
