@@ -2,7 +2,7 @@
 
 **Status:** approved
 **Scope:** engineer mode (`/`) — Selected Works section + whole page bg
-**Files touched:** `src/App.tsx`, `src/styles/concrete.css`
+**Files touched:** `index.html`, `src/styles/concrete.css`, `src/styles/perso.css`
 
 ## Problem
 
@@ -32,23 +32,34 @@ Validated mockup at `.superpowers/brainstorm/.../grain-locked-fixed.html`.
 
 ## Implementation
 
-### DOM (App.tsx)
+### DOM (index.html, NOT App.tsx)
 
-Inject **once** inside `.app`, at the start of the tree, before existing content:
+Inject **once** as a sibling of `#root`, inside `<body>`:
 
-```tsx
-<div className="bg-fx" aria-hidden="true">
-  <div className="bg-fx-grain" />
-  <div className="bg-fx-scanlines" />
-</div>
+```html
+<body>
+  <div class="bg-fx" aria-hidden="true">
+    <div class="bg-fx-grain"></div>
+    <div class="bg-fx-scanlines"></div>
+  </div>
+  <div id="root"></div>
+  ...
+</body>
 ```
 
-Why a sibling DOM element rather than a pseudo-element:
+**Why outside `#root`:** `#root` has `z-index: 1` which creates a new stacking
+context. `mix-blend-mode: overlay` only blends with the backdrop inside the
+same stacking context, so if `.bg-fx` lived inside `#root` it would blend
+against the (transparent) `#root` background — grain renders washed-out white.
+Placing `.bg-fx` as a body-level sibling puts it in body's stacking context,
+where it blends against the dark `var(--bg)` + radial gradients. Also keeps
+the grain visually *behind* the figures rather than over them.
+
+Why a dedicated element rather than a body pseudo-element:
 - `body::after` is already used for the static grid
 - `body::before` is already used in perso mode for the tile grid
-- A dedicated element keeps the two existing layers untouched and gives us
-  two children with independent `mix-blend-mode` (which can't be done with
-  one pseudo).
+- A dedicated element gives us two children with independent
+  `mix-blend-mode` (which can't be done with one pseudo).
 
 ### CSS (concrete.css, appended)
 
@@ -57,7 +68,7 @@ Why a sibling DOM element rather than a pseudo-element:
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 10;
+  z-index: 0;            /* below #root (z-index: 1) — grain stays in background */
   overflow: hidden;
 }
 
@@ -146,10 +157,8 @@ If any of these come back as desired later, they're a separate spec.
   expensive on low-end devices. Mitigation: `steps(8)` (only 8 frames per
   cycle, not 60fps interpolation), single layer, GPU-friendly translate-only
   animation. Acceptable.
-- **Caption readability over grain**: grain blends with bg (overlay) only,
-  not foreground text. Captions stay on top of the grain at z-index well
-  above 10... actually the figure caption is inside `#root` (z-index 1) and
-  `.bg-fx` is at z-index 10 — captions WILL get the grain texture over them.
-  This was visible in the validated mockup and accepted.
+- **Caption readability over grain**: `.bg-fx` is at z-index 0 (body level)
+  and `#root` is at z-index 1, so all figures and captions paint cleanly on
+  top of the grain. Grain is wallpaper, not foreground film.
 - **Mode flicker on /perso → /**: `data-mode` flips on route change. Grain
   reappears on transition out of perso. Acceptable.
