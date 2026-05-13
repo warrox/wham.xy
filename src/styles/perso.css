@@ -13,6 +13,10 @@ body[data-mode="perso"]::after {
   display: none;
 }
 
+body[data-mode="perso"] .bg-fx {
+  display: none;
+}
+
 body[data-mode="perso"]::before {
   content: '';
   position: fixed;

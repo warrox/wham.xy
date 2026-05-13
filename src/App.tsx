@@ -4,6 +4,10 @@ import { ModeToggle } from './components/ModeToggle';
 export function App() {
   return (
     <div className="app">
+      <div className="bg-fx" aria-hidden="true">
+        <div className="bg-fx-grain" />
+        <div className="bg-fx-scanlines" />
+      </div>
       <header className="app-header">
         <ModeToggle />
       </header>
