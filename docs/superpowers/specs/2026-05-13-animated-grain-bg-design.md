@@ -26,7 +26,7 @@ Validated mockup at `.superpowers/brainstorm/.../grain-locked-fixed.html`.
 | ---------------- | ----- | ------------------------------------------------- |
 | grain opacity    | 0.60  | High — assumes overlay blend mode brings it down  |
 | grain speed      | 4s    | Slow drift, not flicker — calmer than a real CRT  |
-| grain blend      | multiply | Only darkens — no washed-out highlights        |
+| grain blend      | overlay | Black noise on dark bg = mostly darkens          |
 | scanline opacity | 0.13  | Just-perceptible darkening band pattern           |
 | scanline blend   | multiply |                                                |
 
@@ -80,9 +80,9 @@ Why a dedicated element rather than a body pseudo-element:
   left: -100%;
   width: 300%;
   height: 300%;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 0 1'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-size: 320px 320px;
-  mix-blend-mode: multiply;
+  mix-blend-mode: overlay;
   opacity: 0.6;
   animation: bg-fx-grain-shift 4s steps(8) infinite;
 }
